@@ -11,19 +11,12 @@ def run(config_file):
 
     if os.path.exists("best_model.pkl"):
         with open("best_model.pkl", "rb") as f:
-            best_network = pickle.load(f)
-            print("Loaded best network:", best_network)
+            best_genome = pickle.load(f)
+            print("Loaded best network:", best_genome)
 
         p = neat.Population(config)
         
-        best_genome = neat.DefaultGenome(0)
-        best_genome.key = 0
-
-        net = neat.nn.FeedForwardNetwork.create(best_genome, config)
-        net = best_network
-
-        p.population[0] = best_genome
-        p.population[0].fitness = 0
+        p.population[best_genome.key] = best_genome
         
         print("Continuing training from saved model.")
     else:

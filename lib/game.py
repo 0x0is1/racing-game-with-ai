@@ -40,7 +40,7 @@ class Game:
                 if(self.score > self.highscore):
                     self.highscore = self.score
                     with open("best_model.pkl", "wb") as f:
-                        pickle.dump(self.nets[0], f)
+                        pickle.dump(self.ge[0], f)
                     print("Model saved.")
                 for genome in self.ge:
                     genome.fitness += 5
@@ -117,5 +117,5 @@ class Game:
             self.draw_game()
             pygame.display.flip()
             self.clock.tick(60)
-        draw_net(config, genome)
+        # draw_net(config, genome)
 
